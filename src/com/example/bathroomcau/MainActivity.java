@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -36,7 +38,6 @@ public class MainActivity extends Activity {
 				case 3: pos.setText("×óÏÂ"); break;
 				case 0: pos.setText("ÓÒÏÂ"); break;
 				}
-					
 			}
 			else
 			{
@@ -70,19 +71,34 @@ public class MainActivity extends Activity {
 		}
 		
 	}
-	
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//System.out.println("out");
 		calButton = (Button)super.findViewById(R.id.calculate);
 		boxNum = (EditText)super.findViewById(R.id.boxnum);
 		pos = (TextView)super.findViewById(R.id.result);
 		posinfo = (TextView)super.findViewById(R.id.resultinfo);
 		calButton.setOnClickListener(new ShowListener());
-		
+		boxNum.setOnTouchListener(new onTouchListenerImpl());
 	}
-
+	private class onTouchListenerImpl implements OnTouchListener
+	{
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			// TODO Auto-generated method stub
+			if (event.getAction() == MotionEvent.ACTION_UP) {
+					boolean touchable = event.getX() > (boxNum.getWidth() - boxNum.getTotalPaddingRight())
+							&& (event.getX() < ((boxNum.getWidth() - boxNum.getPaddingRight())));					
+					if (touchable) {
+						boxNum.setText("");
+					}				
+			}
+			return false;
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

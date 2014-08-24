@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">bathroom</string>
+    <string name="app_name">浴室神器</string>
     <string name="hello_world">浴室神器</string>
-    <string name="hint">请输入浴室柜号码                       </string>
+    <string name="hint">请输入浴室柜号码  </string>
     <string name="calculate">计算</string>
     <string name="action_settings">Settings</string>
 
