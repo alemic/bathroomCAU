@@ -1,4 +1,4 @@
-<LinearLayout 
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -9,49 +9,61 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wq.bathroom.MainActivity" 
-    >
+    android:background="#95CAE4">
 
     <TextView
+        android:id="@+id/instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="4px"
+        android:layout_margin="4dp"
+        android:textSize="18sp"
         android:text="将您在浴室门口拿到的浴室柜钥匙号码告诉我们，我们为您自动计算浴室柜的位置（左上、右上、左下、右下）~~"
          />
     <EditText
         android:id="@+id/boxnum"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20px"
-        android:layout_marginLeft="30px"
-        android:layout_marginRight="30px"
-        android:layout_gravity="center_horizontal"
-        android:hint="@string/hint"
-        android:inputType="number"/>
+        android:textSize="25sp"
+        android:layout_marginTop="7px"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="2dp"
+        android:hint="请输入浴室柜号码         "
+		android:background="@drawable/login_edittext_bg" 
+        android:inputType="number"
+        android:drawableRight="@drawable/delete_selector"
+        android:layout_below="@id/instruction"/>
     <Button
         android:id="@+id/calculate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="20px"
-        android:layout_marginTop="2px"
-        android:layout_marginLeft="30px"
-        android:layout_marginRight="30px"
-        android:layout_marginBottom="2px"
+        android:layout_marginTop="7px"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/login_button_bg"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
         android:layout_gravity="center_horizontal"
-        android:hint="@string/calculate"
+        android:text="@string/calculate"
+        android:layout_below="@id/instruction"
+        android:layout_toRightOf="@id/boxnum"
         />
     <TextView
         android:id="@+id/resultinfo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10px"
-        android:textSize="15px"/>
+        android:textSize="15px"
+        android:layout_below="@id/calculate"/>
     <TextView
         android:id="@+id/result"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="40px"
         android:layout_margin="25px"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_below="@id/resultinfo"/>
 
-</LinearLayout>
+</RelativeLayout>

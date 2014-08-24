@@ -6,11 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
+import android.view.animation.Animation;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -20,6 +23,7 @@ public class MainActivity extends Activity {
 	private TextView posinfo = null;
 	
 	private class ShowListener implements OnClickListener{
+		private Toast mToast;
 		public void onClick(View v){
 			if(boxNum.getText().length()!= 0)
 			{
@@ -36,19 +40,40 @@ public class MainActivity extends Activity {
 			}
 			else
 			{
-				posinfo.setText("请输入数字");
+				//posinfo.setText("请输入数字");
+				showToast("请输入数字");
+				setShakeAnimation();
 			}
 			//完成显示后，关闭键盘
 			InputMethodManager imm =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE); 
 			imm.hideSoftInputFromWindow(boxNum.getWindowToken(), 0); 
-			
 		}
+		
+		public void setShakeAnimation(){
+	    	boxNum.setAnimation(shakeAnimation(5));
+	    }
+
+		public Animation shakeAnimation(int counts){
+	    	Animation translateAnimation = new TranslateAnimation(0, 10, 0, 0);
+	    	translateAnimation.setInterpolator(new CycleInterpolator(counts));
+	    	translateAnimation.setDuration(1000);
+	    	return translateAnimation;
+	    }
+		
+		private void showToast(String msg){
+			if(mToast == null){
+				mToast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+			}else{
+				mToast.setText(msg);
+			}
+			mToast.show();
+		}
+		
 	}
 	
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	protected void onCreate(Bundle savedInstanceState) {		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		calButton = (Button)super.findViewById(R.id.calculate);
 		boxNum = (EditText)super.findViewById(R.id.boxnum);
