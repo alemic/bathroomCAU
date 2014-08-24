@@ -1,0 +1,57 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.wq.bathroom.MainActivity" 
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4px"
+        android:text="将您在浴室门口拿到的浴室柜钥匙号码告诉我们，我们为您自动计算浴室柜的位置（左上、右上、左下、右下）~~"
+         />
+    <EditText
+        android:id="@+id/boxnum"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/hint"
+        android:inputType="number"/>
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20px"
+        android:layout_marginTop="2px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginBottom="2px"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/calculate"
+        />
+    <TextView
+        android:id="@+id/resultinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:textSize="15px"/>
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40px"
+        android:layout_margin="25px"
+        android:gravity="center_horizontal"/>
+
+</LinearLayout>
